@@ -27,7 +27,7 @@ const toType = obj => {
 const getUID = prefix => {
   do {
     prefix += Math.floor(Math.random() * MAX_UID)
-  } while (document.getElementById(prefix))
+  } while (getDocument().getElementById(prefix))
 
   return prefix
 }
@@ -61,7 +61,7 @@ const getSelectorFromElement = element => {
   const selector = getSelector(element)
 
   if (selector) {
-    return document.querySelector(selector) ? selector : null
+    return getDocument().querySelector(selector) ? selector : null
   }
 
   return null
@@ -70,7 +70,7 @@ const getSelectorFromElement = element => {
 const getElementFromSelector = element => {
   const selector = getSelector(element)
 
-  return selector ? document.querySelector(selector) : null
+  return selector ? getDocument().querySelector(selector) : null
 }
 
 const getTransitionDurationFromElement = element => {
@@ -79,7 +79,7 @@ const getTransitionDurationFromElement = element => {
   }
 
   // Get transition-duration of the element
-  let { transitionDuration, transitionDelay } = window.getComputedStyle(element)
+  let { transitionDuration, transitionDelay } = getWindow().getComputedStyle(element)
 
   const floatTransitionDuration = Number.parseFloat(transitionDuration)
   const floatTransitionDelay = Number.parseFloat(transitionDelay)
@@ -154,7 +154,7 @@ const isVisible = element => {
 }
 
 const findShadowRoot = element => {
-  if (!document.documentElement.attachShadow) {
+  if (!getDocument().documentElement.attachShadow) {
     return null
   }
 
@@ -183,7 +183,7 @@ const reflow = element => element.offsetHeight
 const getjQuery = () => {
   const { jQuery } = window
 
-  if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
+  if (jQuery && !getDocument().body.hasAttribute('data-bs-no-jquery')) {
     return jQuery
   }
 
@@ -191,14 +191,14 @@ const getjQuery = () => {
 }
 
 const onDOMContentLoaded = callback => {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', callback)
+  if (getDocument().readyState === 'loading') {
+    getDocument().addEventListener('DOMContentLoaded', callback)
   } else {
     callback()
   }
 }
 
-const isRTL = () => document.documentElement.dir === 'rtl'
+const isRTL = () => getDocument().documentElement.dir === 'rtl'
 
 const defineJQueryPlugin = (name, plugin) => {
   onDOMContentLoaded(() => {
@@ -214,6 +214,22 @@ const defineJQueryPlugin = (name, plugin) => {
       }
     }
   })
+}
+
+const getWindow = () => {
+  if (typeof window !== 'undefined') {
+    return window
+  }
+
+  return {}
+}
+
+const getDocument = () => {
+  if (typeof document !== 'undefined') {
+    return document
+  }
+
+  return {}
 }
 
 export {
@@ -232,5 +248,7 @@ export {
   getjQuery,
   onDOMContentLoaded,
   isRTL,
-  defineJQueryPlugin
+  defineJQueryPlugin,
+  getWindow,
+  getDocument
 }

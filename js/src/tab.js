@@ -10,7 +10,8 @@ import {
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
-  reflow
+  reflow,
+  getDocument
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
@@ -201,7 +202,7 @@ class Tab extends BaseComponent {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
 
   const data = Data.get(this, DATA_KEY) || new Tab(this)
