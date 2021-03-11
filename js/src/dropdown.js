@@ -9,13 +9,13 @@ import * as Popper from '@popperjs/core'
 
 import {
   defineJQueryPlugin,
+  getDocument,
   getElementFromSelector,
   isElement,
   isVisible,
   isRTL,
   noop,
-  typeCheckConfig,
-  getDocument
+  typeCheckConfig
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'

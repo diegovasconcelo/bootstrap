@@ -8,15 +8,15 @@
 import {
   defineJQueryPlugin,
   emulateTransitionEnd,
+  getDocument,
   getElementFromSelector,
   getTransitionDurationFromElement,
+  getWindow,
   isVisible,
   isRTL,
   reflow,
   triggerTransitionEnd,
-  typeCheckConfig,
-  getDocument,
-  getWindow
+  typeCheckConfig
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'

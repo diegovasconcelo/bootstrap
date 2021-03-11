@@ -7,14 +7,14 @@
 
 import {
   defineJQueryPlugin,
+  getDocument,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
   isVisible,
   isRTL,
   reflow,
-  typeCheckConfig,
-  getDocument
+  typeCheckConfig
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'

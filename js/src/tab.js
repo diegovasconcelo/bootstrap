@@ -10,8 +10,8 @@ import {
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
-  reflow,
-  getDocument
+  getDocument,
+  reflow
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'

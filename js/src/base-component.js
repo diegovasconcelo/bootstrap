@@ -6,7 +6,7 @@
  */
 
 import Data from './dom/data'
-import { getWindow, getDocument } from './util/index'
+import { getDocument, getWindow } from './util/index'
 
 /**
  * ------------------------------------------------------------------------

@@ -9,9 +9,9 @@ import {
   defineJQueryPlugin,
   getSelectorFromElement,
   getUID,
+  getWindow,
   isElement,
-  typeCheckConfig,
-  getWindow
+  typeCheckConfig
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
