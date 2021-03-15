@@ -5,7 +5,7 @@
   }
 
   @each $color, $value in $grays {
-    --#{$variable-prefix}#{$color}: #{$value};
+    --#{$variable-prefix}gray-#{$color}: #{$value};
   }
 
   @each $color, $value in $theme-colors {
